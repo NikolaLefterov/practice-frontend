@@ -1,0 +1,38 @@
+<div class="col-md-12">
+  <div class="d-inline p-4">
+    <button class="btn btn-primary" style="float: right" (click)="modal.open()">Change</button>
+  </div>
+
+</div>
+<bs-modal #modal size="lg">
+  <bs-modal-header [showDismiss]="true">
+    <h4 class="modal-title">Change Person Data</h4>
+  </bs-modal-header>
+  <bs-modal-body>
+    <div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th (click)="sortColum('name')" >Name &darr;</th>
+          <th (click)="sortColum('vorname')">Vorname &darr;</th>
+          <th (click)="sortColum('email')" >Email &darr;</th>
+          <th >Telefon</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let person of persons;" (dblclick)="emitEventToParent(person)">
+          <td>{{person.name}}</td>
+          <td>{{person.vorname}}</td>
+          <td>{{person.email}}</td>
+          <td>{{person.telefon}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </bs-modal-body>
+</bs-modal>
+
+
+
+<!--</div>-->
+<!--<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">-->

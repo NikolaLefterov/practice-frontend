@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="col-md-12">
+
+    <div class="visible-lg-inline ">Name&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div class="visible-lg-inline ">{{person.name}}</div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="visible-lg-inline ">Vorname&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div class="visible-lg-inline ">{{person.vorname}}</div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="visible-lg-inline ">Email&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div class="visible-lg-inline ">{{person.email}}</div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="visible-lg-inline ">Telefon&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div class="visible-lg-inline ">{{person.telefon}}</div>
+  </div>
+
+  <app-child (personChange)="PersonDataChange($event)"></app-child>
+
+</div>
