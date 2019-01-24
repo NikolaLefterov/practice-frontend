@@ -13,9 +13,9 @@
       <table class="table">
         <thead>
         <tr>
-          <th (click)="sortColum('name')" >Name &darr;</th>
-          <th (click)="sortColum('vorname')">Vorname &darr;</th>
-          <th (click)="sortColum('email')" >Email &darr;</th>
+          <th (click)="sortColumn('name')" >Name &darr;</th>
+          <th (click)="sortColumn('vorname')">Vorname &darr;</th>
+          <th (click)="sortColumn('email')" >Email &darr;</th>
           <th >Telefon</th>
         </tr>
         </thead>
@@ -25,14 +25,10 @@
           <td>{{person.vorname}}</td>
           <td>{{person.email}}</td>
           <td>{{person.telefon}}</td>
+          <td><button class="btn btn-primary" (click)="deletePerson(person.id)">Delete</button></td>
         </tr>
         </tbody>
       </table>
     </div>
   </bs-modal-body>
 </bs-modal>
-
-
-
-<!--</div>-->
-<!--<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">-->

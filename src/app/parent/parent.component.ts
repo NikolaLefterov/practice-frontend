@@ -8,7 +8,7 @@ import {ParentServices} from './parent.services';
   styleUrls: ['./parent.component.css']
 })
 export class ParentComponent implements OnInit {
-  person: Person = null;
+  person: Person = new Person();
   constructor(private _parentServices: ParentServices) { }
 
   ngOnInit() {
@@ -17,7 +17,7 @@ export class ParentComponent implements OnInit {
     });
   }
 
-  PersonDataChange(person: Person) {
+  personDataChange(person: Person) {
     this.person = person;
   }
 }

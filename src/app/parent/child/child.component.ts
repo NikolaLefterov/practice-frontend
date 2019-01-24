@@ -3,6 +3,8 @@ import {BsModalRef} from 'ngx-bootstrap';
 import {Person} from '../../entities/Person';
 import {ChildServices} from './childServices';
 import {BsModalComponent} from 'ng2-bs3-modal';
+import {Subscription} from 'rxjs';
+import {SharedServices} from '../sharedServices/shared.services';
 
 @Component({
   selector: 'app-child',
@@ -13,13 +15,17 @@ export class ChildComponent implements OnInit {
 
   persons: Person[] = [];
   asc = true;
+  subscription: Subscription;
   @Output() personChange = new EventEmitter<Person>();
   @ViewChild('modal') modal: BsModalComponent;
-  constructor(private _childServices: ChildServices) { }
+  constructor(private _childServices: ChildServices, private _sharedServices: SharedServices) { }
 
   ngOnInit() {
     this._childServices.getAllPersons().then((resp) => {
       this.persons = resp;
+    });
+    this.subscription = this._sharedServices.getNewPerson().subscribe(person => {
+      this.persons.push(person.person);
     });
   }
 
@@ -28,7 +34,7 @@ export class ChildComponent implements OnInit {
     this.modal.close();
   }
 
-  sortColum(property) {
+  sortColumn(property) {
     this.persons.sort(this.dynamicSort(property));
   }
 
@@ -42,5 +48,11 @@ export class ChildComponent implements OnInit {
       const result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
       return result * sortOrder;
     };
+  }
+
+  deletePerson(id: string) {
+    this._childServices.deletePerson(id).then((resp) => {
+      this.persons = resp;
+    });
   }
 }
