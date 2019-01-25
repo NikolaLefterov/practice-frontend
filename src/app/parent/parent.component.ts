@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Person} from '../entities/Person';
 import {ParentServices} from './parent.services';
+import {AddPersonChildComponent} from './add-person-child/add-person-child.component';
+import {ChildComponent} from './child/child.component';
 
 @Component({
   selector: 'app-parent',
@@ -9,6 +11,8 @@ import {ParentServices} from './parent.services';
 })
 export class ParentComponent implements OnInit {
   person: Person = new Person();
+  @ViewChild(AddPersonChildComponent) addPersonModal: AddPersonChildComponent;
+  @ViewChild(ChildComponent) changeModal: ChildComponent;
   constructor(private _parentServices: ParentServices) { }
 
   ngOnInit() {
@@ -19,5 +23,13 @@ export class ParentComponent implements OnInit {
 
   personDataChange(person: Person) {
     this.person = person;
+  }
+
+  openAddPerson() {
+    this.addPersonModal.modal.open();
+  }
+
+  openChangePersons() {
+    this.changeModal.modal.open();
   }
 }

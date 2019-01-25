@@ -14,7 +14,9 @@ import {SharedServices} from '../sharedServices/shared.services';
 export class ChildComponent implements OnInit {
 
   persons: Person[] = [];
-  asc = true;
+  ascName = true;
+  ascVorname = true;
+  ascEmail = true;
   subscription: Subscription;
   @Output() personChange = new EventEmitter<Person>();
   @ViewChild('modal') modal: BsModalComponent;
@@ -40,10 +42,22 @@ export class ChildComponent implements OnInit {
 
   dynamicSort(property) {
     let sortOrder = 1;
-    if (this.asc) {
-      sortOrder = -1;
+    if (property === 'name') {
+      if (!this.ascName) {
+        sortOrder = -1;
+      }
+      this.ascName = !this.ascName;
+    } else if (property === 'vorname') {
+      if (!this.ascVorname) {
+        sortOrder = -1;
+      }
+      this.ascVorname = !this.ascVorname;
+    } else {
+      if (!this.ascEmail) {
+        sortOrder = -1;
+      }
+      this.ascEmail = !this.ascEmail;
     }
-    this.asc = !this.asc;
     return function (a, b) {
       const result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
       return result * sortOrder;

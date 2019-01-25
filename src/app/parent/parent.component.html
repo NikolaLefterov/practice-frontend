@@ -1,28 +1,24 @@
-
-<div style="width: 35%">
-
-  <table class="table">
-    <tbody>
-    <tr>
-      <th>Name</th>
-      <td>{{person.name}}</td>
-    </tr>
-    <tr>
-      <th>Vorname</th>
-      <td>{{person.vorname}}</td>
-    </tr>
-    <tr>
-      <th>Email</th>
-      <td>{{person.email}}</td>
-    </tr>
-    <tr>
-      <th>Telefon</th>
-      <td>{{person.telefon}}</td>
-    </tr>
-    </tbody>
-  </table>
+<div class="w-75 ml-xl-5">
+  <div class="row ml-xl-5">
+    <div class="col-sm-3">
+      <div class="mt-xl-5 text-lg-right">Name</div>
+      <div class="mt-xl-5 text-lg-right">Vorname</div>
+      <div class="mt-xl-5 text-lg-right">Email</div>
+      <div class="mt-xl-5 text-lg-right">Telefon</div>
+    </div>
+    <div class="col-sm-1">
+      <div class="mt-xl-5 w-50">{{person.name}}</div>
+      <div class="mt-xl-5 w-25">{{person.vorname}}</div>
+      <div class="mt-xl-5 w-50">{{person.email}}</div>
+      <div class="mt-xl-5 w-50">{{person.telefon}}</div>
+    </div>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary" (click)="openChangePersons()">Change</button>
+  </div>
+  <div class="text-center mt-xl-5">
+    <button class="btn btn-primary" (click)="openAddPerson()">Add Person</button>
+  </div>
 </div>
 <app-add-person-child (personRegister)="personDataChange($event)"></app-add-person-child>
 <app-child (personChange)="personDataChange($event)"></app-child>
-
-

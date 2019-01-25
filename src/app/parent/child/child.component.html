@@ -1,9 +1,4 @@
-<div class="col-md-12">
-  <div class="d-inline p-4">
-    <button class="btn btn-primary" style="float: right" (click)="modal.open()">Change</button>
-  </div>
 
-</div>
 <bs-modal #modal size="lg">
   <bs-modal-header [showDismiss]="true">
     <h4 class="modal-title">Change Person Data</h4>
@@ -13,9 +8,12 @@
       <table class="table">
         <thead>
         <tr>
-          <th (click)="sortColumn('name')" >Name &darr;</th>
-          <th (click)="sortColumn('vorname')">Vorname &darr;</th>
-          <th (click)="sortColumn('email')" >Email &darr;</th>
+          <th *ngIf="ascName">Name <span (click)="sortColumn('name')" style="cursor: pointer">&#9660;</span></th>
+          <th *ngIf="!ascName">Name  <span (click)="sortColumn('name')" style="cursor: pointer">&#9650;</span></th>
+          <th *ngIf="ascVorname">Vorname <span (click)="sortColumn('vorname')" style="cursor: pointer">&#9660;</span></th>
+          <th *ngIf="!ascVorname">Vorname  <span (click)="sortColumn('vorname')" style="cursor: pointer">&#9650;</span></th>
+          <th *ngIf="ascEmail">Email <span (click)="sortColumn('email')" style="cursor: pointer">&#9660;</span></th>
+          <th *ngIf="!ascEmail">Email  <span (click)="sortColumn('email')" style="cursor: pointer">&#9650;</span></th>
           <th >Telefon</th>
         </tr>
         </thead>
